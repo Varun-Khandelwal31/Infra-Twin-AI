@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: infratwin-ai
+    env: node
+    region: singapore
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npx next start -p $PORT
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: GROQ_API_KEY
+        sync: false

@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0a0e17] text-slate-100 font-sans antialiased overflow-x-hidden;
+  }
+}
+
+/* Custom glowing scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #070a11;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 217, 255, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 217, 255, 0.5);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(380px); }
+}
+
+.animate-scanline {
+  animation: scanline 1.2s ease-in-out infinite;
+}
+
+/* 3D Glassmorphism & Card Tilt Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.card-3d-tilt {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.card-3d-tilt:hover {
+  transform: translateY(-4px) rotateX(2deg) rotateY(-2deg) scale(1.01);
+  box-shadow: 0 16px 32px -8px rgba(0, 217, 255, 0.25), 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+.shadow-3d-glow {
+  box-shadow: 0 12px 28px -6px rgba(0, 217, 255, 0.3), 0 0 15px rgba(0, 217, 255, 0.2);
+}
+
+/* Vengeance UI Animated Gradient Borders & Shimmer Effects */
+@keyframes borderRotate {
+  0% { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+@keyframes raySweep {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+  50% { transform: rotate(180deg) scale(1.15); opacity: 0.6; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.3; }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-ray-sweep {
+  animation: raySweep 18s linear infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.vengence-glow-border {
+  position: relative;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.15), rgba(16, 185, 129, 0.08), rgba(239, 68, 68, 0.05));
+  box-shadow: 0 10px 30px -10px rgba(0, 217, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.vengence-glow-border:hover {
+  box-shadow: 0 15px 35px -5px rgba(0, 217, 255, 0.4), 0 0 25px rgba(0, 217, 255, 0.25);
+}
+
+.vengence-glass-dock {
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 217, 255, 0.15);
+}

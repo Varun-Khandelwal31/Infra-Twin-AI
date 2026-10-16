@@ -1,0 +1,46 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "InfraTwin AI Swytchcode CLI & Agentic API",
+    "version": "2.4.0",
+    "description": "Swytchcode API specification for automated road distress auditing, 3D depth estimation, and IRC:82 GenAI BOQ generation."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local InfraTwin AI Production Server"
+    }
+  ],
+  "paths": {
+    "/api/copilot": {
+      "post": {
+        "summary": "Execute Swytchcode Durable BOQ Generation Workflow",
+        "operationId": "runSwytchcodeBOQ",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prompt": {
+                    "type": "string",
+                    "example": "Generate BOQ for 2.5 sqm pothole, depth 15cm"
+                  },
+                  "inspectionContext": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful BOQ response with Swytchcode durable execution telemetry"
+          }
+        }
+      }
+    }
+  }
+}
